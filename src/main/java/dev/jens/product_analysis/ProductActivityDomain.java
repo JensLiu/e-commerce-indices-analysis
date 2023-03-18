@@ -1,73 +1,69 @@
-package dev.jens.product;
+package dev.jens.product_analysis;
 
-import dev.jens.Region;
-import dev.jens.entity.ProductActivity;
+import dev.jens.enums.MyRegion;
+import dev.jens.enums.ProductActivityType;
 
 public class ProductActivityDomain {
-    private String productId;
-    private ProductActivityType systemPageType;
-    private ProductActivityType userEntranceType;
-    private Region region;
-    private Long viewDuration;
+    private String skuId;
+    private ProductActivityType systemActivityType;
+    private ProductActivityType userEntranceFromType;
+    private MyRegion region;
 
     private Long timestamp;
 
     @Override
     public String toString() {
         return "ProductActivityDomain{" +
-                "productId='" + productId + '\'' +
-                ", systemPageType=" + systemPageType +
-                ", userEntranceType=" + userEntranceType +
+                "productId='" + skuId + '\'' +
+                ", systemPageType=" + systemActivityType +
+                ", userEntranceType=" + userEntranceFromType +
                 ", region=" + region +
-                ", viewDuration=" + viewDuration +
                 ", timestamp=" + timestamp +
                 '}';
     }
 
-    public ProductActivityDomain(String productId,
+    public ProductActivityDomain(String skuId,
                                  ProductActivityType systemPageType,
                                  ProductActivityType userEntranceType,
-                                 Region region,
-                                 Long viewDuration,
+                                 MyRegion region,
                                  Long timestamp) {
-        this.productId = productId;
-        this.systemPageType = systemPageType;
-        this.userEntranceType = userEntranceType;
+        this.skuId = skuId;
+        this.systemActivityType = systemPageType;
+        this.userEntranceFromType = userEntranceType;
         this.region = region;
-        this.viewDuration = viewDuration;
         this.timestamp = timestamp;
     }
 
-    public Region getRegion() {
+    public String getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(String skuId) {
+        this.skuId = skuId;
+    }
+
+    public ProductActivityType getSystemActivityType() {
+        return systemActivityType;
+    }
+
+    public void setSystemActivityType(ProductActivityType systemActivityType) {
+        this.systemActivityType = systemActivityType;
+    }
+
+    public ProductActivityType getUserEntranceFromType() {
+        return userEntranceFromType;
+    }
+
+    public void setUserEntranceFromType(ProductActivityType userEntranceFromType) {
+        this.userEntranceFromType = userEntranceFromType;
+    }
+
+    public MyRegion getRegion() {
         return region;
     }
 
-    public void setRegion(Region region) {
+    public void setRegion(MyRegion region) {
         this.region = region;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public ProductActivityType getSystemPageType() {
-        return systemPageType;
-    }
-
-    public void setSystemPageType(ProductActivityType systemPageType) {
-        this.systemPageType = systemPageType;
-    }
-
-    public ProductActivityType getUserEntranceType() {
-        return userEntranceType;
-    }
-
-    public void setUserEntranceType(ProductActivityType userEntranceType) {
-        this.userEntranceType = userEntranceType;
     }
 
     public Long getTimestamp() {
@@ -76,13 +72,5 @@ public class ProductActivityDomain {
 
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getViewDuration() {
-        return viewDuration;
-    }
-
-    public void setViewDuration(Long viewDuration) {
-        this.viewDuration = viewDuration;
     }
 }

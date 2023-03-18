@@ -4,11 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bab2c54-ec67-4fb2-8f33-3cc2eaa0fc6d" name="Changes" comment="" />
+    <list default="true" id="0bab2c54-ec67-4fb2-8f33-3cc2eaa0fc6d" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/app_driver/ExecuteOnEventTopic.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/app_driver/ExecuteOnEventTopic.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/app_driver/ExecuteOnStartTopic.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/app_driver/ExecuteOnStartTopic.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/daily_active_user_analysis/DailyActiveUserAnalysis.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/daily_active_user_analysis/DailyActiveUserAnalysis.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/daily_active_user_analysis/UserStartRecordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/daily_active_user_analysis/UserStartRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/enums/MyRegion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/enums/MyRegion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/enums/PageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/enums/PageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/enums/ProductActivityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/enums/ProductActivityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/DataParser.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/DataParser.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductActivityDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductActivityDomain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductAnalysis.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductAnalysis.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductClickThroughRateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/ProductClickThroughRateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/SystemRecommendationAnalysisDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/product_analysis/SystemRecommendationAnalysisDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/user_route_analysis/Route.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/user_route_analysis/Route.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/user_route_analysis/RouteAnalysis.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/user_route_analysis/RouteAnalysis.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/utils/MyESUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/utils/MyESUtils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/jens/utils/MyKafkaUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/jens/utils/MyKafkaUtils.scala" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Package Object" />
+        <option value="Scala Object" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -30,10 +69,32 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/code/e-commerce-indices-analysis/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.21559075",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\e-commerce-indices-analysis\src\main\resources" />
+      <recent name="D:\code\e-commerce-indices-analysis\src\main\java\dev\jens\app_driver" />
+      <recent name="D:\code\e-commerce-indices-analysis\src\main\java\dev\jens\daily_active_user_analysis" />
+      <recent name="D:\code\e-commerce-indices-analysis\src\main\java\dev\jens\utils" />
+      <recent name="D:\code\e-commerce-indices-analysis\src\main\java\dev\jens\user_route_analysis" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.jens.product_analysis" />
+      <recent name="dev.jens.enums" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -42,8 +103,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679111231222</updated>
-      <workItem from="1679111232852" duration="1000" />
+      <workItem from="1679111232852" duration="379000" />
+      <workItem from="1679111617276" duration="4295000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>

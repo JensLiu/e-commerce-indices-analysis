@@ -1,4 +1,10 @@
-package dev.jens.user;
+package dev.jens.daily_active_user_analysis;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import dev.jens.enums.MyRegion;
+
+import java.text.SimpleDateFormat;
 
 public class UserStartRecordDto {
     private String deviceId;
@@ -99,4 +105,21 @@ public class UserStartRecordDto {
         this.hour = hour;
         this.minute = minute;
     }
+
+    public static UserStartRecordDto parseJsonData(String json) {
+        JSONObject jsonObject = JSON.parseObject(json);
+        Long timestamp = jsonObject.getLong("ts");
+        JSONObject commonJson = jsonObject.getJSONObject("common");
+        assert commonJson != null;
+        String deviceId = commonJson.getString("mid");
+        String userId = commonJson.getString("uid");
+        String region = MyRegion.parseRegionCode(commonJson.getString("ar")).getCode();
+        String installSource = commonJson.getString("ch");
+        String version = commonJson.getString("vc");
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
+        String hour = new SimpleDateFormat("HH").format(timestamp);
+        String minute = new SimpleDateFormat("mm").format(timestamp);
+        return new UserStartRecordDto(deviceId, userId, region, installSource, version, date, hour, minute);
+    }
+
 }

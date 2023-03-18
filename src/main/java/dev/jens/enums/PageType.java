@@ -1,4 +1,4 @@
-package dev.jens.user_route_analysis;
+package dev.jens.enums;
 
 public enum PageType {
 

@@ -1,6 +1,7 @@
-package dev.jens.route_analysis
+package dev.jens.user_route_analysis
 
 import com.alibaba.fastjson.{JSON, JSONObject}
+import dev.jens.enums.PageType
 import dev.jens.utils.{MyESUtils, MyKafkaUtils, MyRedisUtils}
 import io.searchbox.client.JestClient
 import io.searchbox.core.Index
@@ -13,14 +14,9 @@ import scala.collection.mutable.ListBuffer
 
 object RouteAnalysis {
 
-    val ROUTE_HASH_KEY = "route"
-    val ROUTE_ANALYSIS_INDEX_PREFIX = "route_analysis"
-    val NODE_SEPARATOR = " -> "
-
-    def main(args: Array[String]): Unit = {
-//        debug()
-        execute(appLogic)
-    }
+    private val ROUTE_HASH_KEY = "route"
+    private val ROUTE_ANALYSIS_INDEX_PREFIX = "route_analysis"
+    private val NODE_SEPARATOR = " -> "
 
     def appLogic(kafkaStream: InputDStream[ConsumerRecord[String, String]]): Unit = {
         kafkaStream.foreachRDD(rdd => {
@@ -90,6 +86,11 @@ object RouteAnalysis {
         val index = new Index.Builder(route).index(ROUTE_ANALYSIS_INDEX_PREFIX + "_" + date).`type`("_doc").build()
         jestClient.execute(index)
         println(s"SUBMIT !!! uid: $uid, route: $route, timestamp: $timestamp")
+    }
+
+    def main(args: Array[String]): Unit = {
+        debug()
+//        execute(appLogic)
     }
 
     def execute(executeLogic: InputDStream[ConsumerRecord[String, String]] => Unit): Unit = {

@@ -1,6 +1,6 @@
-package dev.jens;
+package dev.jens.enums;
 
-public enum Region {
+public enum MyRegion {
     CHN_BEIJING("CN-BJ"),
     CHN_SHANGHAI("CN-SH"),
     CHN_HEILONGJIANG("CN-HL"),
@@ -10,14 +10,14 @@ public enum Region {
     CHN_CHONGQING("CN-CQ"),
     CHN_YUNNAN("CN-YN");
     private String code;
-    Region(String s) {
+    MyRegion(String s) {
         this.code = s;
     }
 
     public String getCode() {
         return this.code;
     }
-    public static Region parseRegionCode(String regionCode) {
+    public static MyRegion parseRegionCode(String regionCode) {
         switch (regionCode) {
             case "110000": return CHN_BEIJING;
             case "310000": return CHN_SHANGHAI;

@@ -38,6 +38,4 @@ object MyKafkaUtils {
         kafkaStream
     }
 
-//    def getKafkaDStream(topic: String, groupId: String, )
-
 }

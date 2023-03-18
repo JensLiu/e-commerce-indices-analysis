@@ -1,6 +1,6 @@
-package dev.jens.product;
+package dev.jens.product_analysis;
 
-public class ProductActivityDto {
+public class ProductClickThroughRateDto {
 
     private String sku_id = "unspecified";
     private int system_search = 0;
@@ -32,13 +32,13 @@ public class ProductActivityDto {
                 '}';
     }
 
-    public ProductActivityDto(ProductActivityDomain domain) {
+    public ProductClickThroughRateDto(ProductActivityDomain domain) {
         System.out.println("domain: " + domain);
-        this.sku_id = domain.getProductId();
+        this.sku_id = domain.getSkuId();
         this.timestamp = domain.getTimestamp();
         this.geo_code = domain.getRegion().getCode();
-        if (domain.getSystemPageType() != null) {
-            switch (domain.getSystemPageType()) {
+        if (domain.getSystemActivityType() != null) {
+            switch (domain.getSystemActivityType()) {
                 case SEARCHED:
                     this.system_search = 1;
                     break;
@@ -53,8 +53,8 @@ public class ProductActivityDto {
                     break;
             }
         }
-        if (domain.getUserEntranceType() != null) {
-            switch (domain.getUserEntranceType()) {
+        if (domain.getUserEntranceFromType() != null) {
+            switch (domain.getUserEntranceFromType()) {
                 case SEARCHED:
                     this.entered_from_search = 1;
                     break;

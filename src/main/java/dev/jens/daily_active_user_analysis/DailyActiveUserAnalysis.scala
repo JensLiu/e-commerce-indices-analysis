@@ -1,6 +1,5 @@
-package dev.jens.user
+package dev.jens.daily_active_user_analysis
 
-import dev.jens.entity.UserStartRecordMapper
 import dev.jens.utils.{MyESUtils, MyKafkaUtils, MyRedisUtils}
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -11,42 +10,22 @@ import scala.collection.mutable.ListBuffer
 
 object DailyActiveUserAnalysis {
 
-    val DAILY_ACTIVE_USER_INDEX_PREFIX = "active_user_analysis"
-
-    def main(args: Array[String]): Unit = {
-        execute(appLogic)
-    }
-
-    def execute(executeLogic: InputDStream[ConsumerRecord[String, String]] => Unit): Unit = {
-        // 创建流
-        val streamingContext: StreamingContext = new StreamingContext("local[3]", "daily_active_user", Seconds(3))
-        val kafkaStream = MyKafkaUtils.createKafkaStream(
-            streamingContext = streamingContext,
-            topic = "start",
-            groupId = "consumer-group",
-            offset = Map()
-        )
-        // 执行逻辑建立
-        executeLogic(kafkaStream)
-        // 启动流
-        streamingContext.start()
-        streamingContext.awaitTermination()
-    }
+    private val DAILY_ACTIVE_USER_INDEX_PREFIX = "active_user_analysis"
 
 
     val appLogic: InputDStream[ConsumerRecord[String, String]] => Unit = kafkaStream => {
-        val startRecordStream = kafkaStream.map(_.value()).map(UserStartRecordMapper.toDto)
+        val startRecordStream = kafkaStream.map(_.value()).map(UserStartRecordDto.parseJsonData)
 
+        // filter duplicate start events from the same device within a day
+        // to get the active user count
         val uniqueStartRecordStream = startRecordStream.mapPartitions(filterDuplicates)
 
-        uniqueStartRecordStream.foreachRDD(rdd => {
-            rdd.foreachPartition(itr => {
-                val date = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-                MyESUtils.bulkInsert(itr.map(r => (r.getUserId, r))
-                        .toList, DAILY_ACTIVE_USER_INDEX_PREFIX + "_" + date)
-            })
-        })
-
+        uniqueStartRecordStream.foreachRDD(rdd => rdd.foreachPartition(itr => {
+            val date = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+            // insert into Elasticsearch
+            MyESUtils.bulkInsertWithIds(itr.map(r => (r.getUserId, r))
+                    .toList, DAILY_ACTIVE_USER_INDEX_PREFIX + "_" + date)
+        }))
     }
 
     private val filterDuplicates: Iterator[UserStartRecordDto] => Iterator[UserStartRecordDto] = itr => {
@@ -65,8 +44,26 @@ object DailyActiveUserAnalysis {
             }
         }
         client.close()
-
         tempList.toIterator
+    }
+
+    def main(args: Array[String]): Unit = {
+        execute(appLogic)
+    }
+
+    def execute(executeLogic: InputDStream[ConsumerRecord[String, String]] => Unit): Unit = {
+        val streamingContext: StreamingContext = new StreamingContext("local[3]", "daily_active_user", Seconds(3))
+        val kafkaStream = MyKafkaUtils.createKafkaStream(
+            streamingContext = streamingContext,
+            topic = "start",
+            groupId = "consumer-group",
+            offset = Map()
+        )
+
+        executeLogic(kafkaStream)
+
+        streamingContext.start()
+        streamingContext.awaitTermination()
     }
 
 }

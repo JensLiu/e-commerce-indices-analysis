@@ -1,6 +1,4 @@
-package dev.jens.product;
-
-import dev.jens.Region;
+package dev.jens.enums;
 
 public enum ProductActivityType {
     PRODUCT_PROMOTION,
@@ -8,7 +6,7 @@ public enum ProductActivityType {
     SEARCHED,
     RECOMMENDATION;
 
-    public static ProductActivityType parseDataString(String string) {
+    public static ProductActivityType parseActivityType(String string) {
         switch (string) {
             case "recommend": return ProductActivityType.RECOMMENDATION;
             case "promotion": return ProductActivityType.PRODUCT_PROMOTION;
