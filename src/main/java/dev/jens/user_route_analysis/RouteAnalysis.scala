@@ -46,7 +46,14 @@ object RouteAnalysis {
 
         val last_route = jedisClient.hget(ROUTE_HASH_KEY, uid)
 
-        println(s"uid: ${if (uid != null) uid}, last_page: ${if (last_page != null) last_page}, current_page: ${if (current_page != null) current_page}, last_route: ${if (last_route != null) last_route}")
+        val get_new_route = (current_page: String, last_page: String) =>
+            if (last_page != null) last_page + NODE_SEPARATOR + current_page
+            else current_page
+
+        println(s"uid: ${if (uid != null) uid}, " +
+                s"last_page: ${if (last_page != null) last_page}, " +
+                s"current_page: ${if (current_page != null) current_page}, " +
+                s"last_route: ${if (last_route != null) last_route}")
 
         if (last_route != null) {
             val nodes = last_route.split(NODE_SEPARATOR)
@@ -56,27 +63,19 @@ object RouteAnalysis {
                     // if the route is not continuous, that means the previous route is completed
                     // hence we store it as a complete route for a user at a specific timestamp
                     uploadToElasticsearch(uid, last_route, timestamp, jestClient)
-                    // we now delete the previous route so that next time we can start a new route
-                    jedisClient.hdel(ROUTE_HASH_KEY, uid)
+                    // we now start a new route
+                    jedisClient.hset(ROUTE_HASH_KEY, uid, get_new_route(current_page_string, last_page_string))
                 } else if (last_page != null) {
                     // if the route is continues, we just append the current page to the previous route
                     // to make a new route
-                    var new_route = ""
                     // if last_route is not null, meaning we are in the middle of a route
                     // we just append the current page to the previous route
-                    new_route = last_route + NODE_SEPARATOR + current_page
-                    jedisClient.hset(ROUTE_HASH_KEY, uid, new_route)
+                    jedisClient.hset(ROUTE_HASH_KEY, uid, last_route + NODE_SEPARATOR + current_page)
                 }
             }
         } else {
             // is last route is null, we start a new route
-            var new_route = ""
-            if (last_page == null) {
-                new_route = current_page.toString
-            } else {
-                new_route = last_page + NODE_SEPARATOR + current_page
-            }
-            jedisClient.hset(ROUTE_HASH_KEY, uid, new_route)
+            jedisClient.hset(ROUTE_HASH_KEY, uid, get_new_route(current_page_string, last_page_string))
         }
     }
 
