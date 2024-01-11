@@ -2,33 +2,33 @@ package dev.jens.enums;
 
 public enum PageType {
 
-    HOME("首页"),
-    CATEGORY("分类页"),
-    DISCOVERY("发现页"),
-    TOP_BOARD("热门排行"),
-    FAVOURITE("收藏页"),
-    SEARCH("搜索页"),
-    COMMODITY_LIST("商品列表页"),
-    COMMODITY_DETAIL("商品详情"),
-    COMMODITY_SPECIFICATION("商品规格"),
-    COMMENT("评价"),
-    COMMENT_FINISHED("评价完成"),
-    COMMENT_LIST("评价列表"),
-    CART("购物车"),
-    TRADE("下单结算"),
-    PAYMENT("支付页面"),
-    PAYMENT_SUCCESS("支付完成"),
-    ORDERS_ALL("全部订单"),
-    ORDERS_UNPAID("订单待支付"),
-    ORDERS_UNDELIVERED("订单待发货"),
-    ORDERS_UNRECEPTED("订单待收货"),
-    ORDERS_TO_COMMENT("订单待评价"),
-    MINE_PAGE("我的"),
-    ACTIVITY("活动"),
-    LOGIN("登录"),
-    REGISTER("注册");
+    HOME("home"),
+    CATEGORY("category"),
+    DISCOVERY("discovery"),
+    TOP_BOARD("top_board"),
+    FAVOURITE("favourite"),
+    SEARCH("search"),
+    COMMODITY_LIST("commodity_list"),
+    COMMODITY_DETAIL("commodity_detail"),
+    COMMODITY_SPECIFICATION("commodity_specification"),
+    COMMENT("comment"),
+    COMMENT_FINISHED("comment_finished"),
+    COMMENT_LIST("comment_list"),
+    CART("cart"),
+    TRADE("trade"),
+    PAYMENT("payment"),
+    PAYMENT_SUCCESS("payment_success"),
+    ORDERS_ALL("orders_all"),
+    ORDERS_UNPAID("orders_unpaid"),
+    ORDERS_UNDELIVERED("orders_undelivered"),
+    ORDERS_UNRECEPTED("orders_unrecepted"),
+    ORDERS_TO_COMMENT("orders_to_comment"),
+    MINE_PAGE("mine"),
+    ACTIVITY("activity"),
+    LOGIN("login"),
+    REGISTER("register");
 
-    private String code;
+    private final String code;
 
     PageType(String string) {
         this.code = string;

@@ -14,13 +14,12 @@ public class SystemRecommendationAnalysisDto {
         if (domain.getSystemActivityType() == ProductActivityType.RECOMMENDATION) {
             System.out.println("system_recommendation");
             // system recommendation displayed
-            return new SystemRecommendationAnalysisDto("算法推荐");
+            return new SystemRecommendationAnalysisDto("recommended");
         } else if (domain.getUserEntranceFromType() == ProductActivityType.RECOMMENDATION) {
             System.out.println("entered_from_recommendation");
             // user clicked through recommendation
-            return new SystemRecommendationAnalysisDto("实际吸引人数");
+            return new SystemRecommendationAnalysisDto("entered");
         }
-//        System.out.println("not suitable");
         return null;
     }
 
